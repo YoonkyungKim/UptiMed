@@ -1,0 +1,28 @@
+{% extends "layout-member.html" %}
+{% block content %}
+<div class="search-wrapper">
+    <div class="sidebar">
+        <div class="sidebar-search">
+            <form class="search-form form-search">
+                <div class="input-container search-input-container">
+                    <label for="search">Search clinics</label>
+                    <label for="search-sort">Sort the result by</label>
+                    <select name="sort" id="search-sort">
+                        <option value="by-distance">By Distance</option>
+                        <option value="review-score">Review Score</option>
+                    </select>
+                    <input class="search input" id="search" type="search" placeholder="Search by location" aria-label="Search">
+                    <button class="search-submit btn" type="submit"><i class="fa-3x fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="sidebar-search">div1</div>
+        <div class="sidebar-search">div1</div>
+        
+    </div>
+
+    <div class="content">
+        <div id="mapid"></div>  
+    </div>
+</div>
+{% endblock %}

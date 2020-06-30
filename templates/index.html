@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--Enter Name -->
+<main class="main-form">
+    <!-- <div class="grid-100">
+    </div> -->
+    <div class="form-container">
+        <form class="register-form" action="{{ url_for('save') }}" method="POST">
+            <span class="logo-container">
+                <img class="logo" src="../static/logo-3.png" width="30" height="30" alt="" loading="lazy">UptiMed
+            </span>
+            <div class="every-input-container">
+                <div class="input-container">
+                    <label for="username">Username</label>
+                    <input class="input" id="username"  type="text" name="name" value="{{ saves.get('name', '') }}"  placeholder="username" autofocus>
+                </div>
+                <div class="input-container">
+                    <label for="password">Password<span class="password-reset"><a class="password-reset-link"href="#">Forgot password?</a></span></label>
+                    <input class="input" type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="input-container">
+                    <input class="signin-submit" type="submit" name="submit" id="submit" value="SIGN IN">
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</main>
+{% endblock %}
+
