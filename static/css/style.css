@@ -1,8 +1,13 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: 'Montserrat';
+    font-family: 'Noto Sans JP';
     font-weight: 600;
     text-align: center;
-    padding-top: 2%;
 }
 
 h1 {
@@ -27,6 +32,7 @@ h3 {
 }
 
 p {
+    font-family: 'Noto Sans JP';
     font-weight: 400;
 }
 
@@ -34,7 +40,72 @@ p {
     color: #FFFFFF;
 }
 
-/* main page */
+/* map */
+.search-map {
+    grid-column-start: 2;
+}
+
+#map {
+    height: 100%;
+}
+
+/* index page */
+
+.index-main {
+    width: 500px;
+    min-height: 400px;
+    padding: 100px 0;
+    margin: 5% auto;
+    box-shadow: rgb(136, 136, 136) 2px 1px 20px;
+    text-align: center;
+}
+
+.index-logo-container {
+    margin-bottom: 5%;
+    font-family: 'Noto Sans JP';
+    font-weight: 800;
+    font-size: 2rem;
+    color: #3d1518; 
+}
+
+.brandname {
+    font-family: 'Noto Sans JP';
+    font-weight: 700;
+    font-size: 3rem;
+    color: #3d1518; 
+    vertical-align: middle;
+    margin: 3% 0 0 0;
+}
+
+.index-p {
+    font-size: 1.5rem;
+    margin-bottom: 4%;
+}
+
+.index-button {
+    border: none;
+    border-radius: 0.3em;
+    text-align: center;
+    padding: 20px 40px;
+    margin: 0 7px;
+    display: inline-block;
+    font-family: 'Lato';
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.index-button-customer {
+    background-color: #ff7043;
+}
+
+.index-button-hospital {
+    background-color: #ffffff;
+    border: solid 1.5px #ff7043;
+    color: #ff7043;
+}
+
+/* customer login page */
 
 .main-form {
     width: 500px;
@@ -43,16 +114,18 @@ p {
     justify-content:center;
     align-items:center;
     margin: 5% auto;
-    /* display: flex; */
     box-shadow: rgb(136, 136, 136) 2px 1px 20px;
 }
 
 .form-container{
     max-width: 100%;
     max-height: 100%;
-    /* padding: 5% 5% 3% 5%; */
     margin: 0 auto;
     clear: both;
+}
+
+.customer-brandname {
+    font-size: 2.3rem;
 }
 
 .every-input-container {
@@ -70,14 +143,15 @@ p {
     text-align: left;
 }
 
-.input-container input {
-    padding: 4% 3%;
-    margin: 0 0 4% 0;
+.customer-input-label {
+    font-family: 'Noto Sans JP';
 }
 
 .input {
     border: 1px solid #d3d3d3;
     border-radius: 4px; 
+    padding: 4% 3%;
+    margin: 0 0 4% 0;
 }
 
 .input::placeholder {
@@ -94,6 +168,8 @@ p {
     border-radius: 4px; 
     color: #FFFFFF;
     width: 30%;
+    padding: 3% 3%;
+    margin: 0 0 4% 0;
 }
 
 .newsletter-submit {
@@ -105,20 +181,8 @@ p {
     margin-bottom: 6%;
 }
 
-
-.logo-container {
-    font-family: 'Noto Sans JP';
-    font-weight: 800;
-    font-size: 2rem;
-    color: #3d1518; 
-}
-
-.logo {
-    margin: 0 2% 0 0;
-}
-
 .password-reset-link {
-    margin-left: 55%;
+    float: right;
     font-weight: 500;
     font-size: 1rem;
     color: #ff7043;
@@ -126,101 +190,133 @@ p {
 }
 
 /* search */
+
 .search-wrapper {
+    height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-auto-rows: 100px; 
-    margin: 3%;
-    column-gap: 10px;
+    grid-template-columns: 1fr 2fr; 
 }
 
 .sidebar {
     grid-column-start: 1; 
-    grid-column-start: 1; 
-    grid-row-start: 1; 
-    grid-row-end: 5; 
-    display: grid;
-    column-gap: 10px;
     row-gap: 1em;
-    margin: 0 3%;
 }
 
-.sidebar-search {
-    background-color: moccasin;
+/* search form */
+
+.sidebar-search-form {
+    box-shadow:  rgb(136, 136, 136) 2px 1px 20px;
+    height: 180px;
+    margin-left: 0;
 }
+
+.search-span {
+    font-family: 'Noto Sans JP';
+    font-weight: 600;
+    line-height: 1.3;
+    color: #665c5a;
+    display: inline-block;
+    padding: 3% 3% 4% 0.5%;
+    font-size: 1.3rem;
+}
+
+/* form itself */
 
 .search-form {
-    padding: 3% 5%;
+    padding: 4% 5% 3% 5%;
+    vertical-align: center;
 }
+
+.before-search {
+    height: 100%;
+    box-shadow:  rgb(136, 136, 136) 2px 1px 20px;
+} 
 
 .search-input-container {
     margin: 4% 0;
 }
 
-.search {
-    width: 90%;
+.search-input {
+    width: 80%;
+    margin-right: 0;
+    border-radius: 0.5em 0 0 0.5em;
+    padding: 4% 3%;
+}
+
+.search-input::placeholder {
+    color: #d3d3d3;
+    font-size: 0.9rem;
 }
 
 .search-submit {
+    font-family: 'Noto Sans JP';
+    float: right;
+    margin-left: 0;
+    border-radius: 0 0.5em 0.5em 0;
+    border: none;
+    padding: 4% 3%;
+    background-color: #ff7043;
+    width: 20%;
+    color: #ffffff;
+}
+
+/* search result */
+
+.sidebar-search-result {
+    margin: 5% 3%;
+}
+
+.no-search-result {
+    padding: 8% 4%;
+}
+
+.search-result-box {
+    padding: 7% 6%;
+    margin-bottom: 3%;
+    box-shadow:  rgb(175, 174, 174) 1px 2px 5px;
+}
+
+.search-result-name {
+    font-family: 'Noto Sans JP';
+    font-weight: 600;
+    display: inline;
+    font-size: 1rem;
+    color: #472527;
+}
+
+.search-result-wait-time {
+    font-family: 'Roboto';
+    font-weight: 700;
+    float: right;
+    color: #472527;
+}
+
+.search-result-wait-time-span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #ff7043;
+}
+
+.search-result-addr {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: #808080;
+    margin-bottom: 0.5rem;
+}
+
+.search-result-operating-time {
+    font-size: 0.75rem;
     color: #808080;
 }
 
-.fas {
-    font-size: 50px;
+.search-result-operating-time-span {
+    color: #493133;
 }
-
-.fa-3x {
-    font-size: 150px;  
-}
-
-/* map */
-
-.content {
-    grid-column-start:2;
-    grid-column-end: 2; 
-    grid-row-start: 1; 
-    grid-row-end: 5;
-}
-
-#mapid { height: 100%; }
-
-
 
 /* For the headings in each section */
 
 .heading {
     padding: 7% 5%;
-}
-
-/* For banners */
-
-.banner-h2 {
-    font-size: 1.5rem;
-    padding: 5% 0;
-}
-
-.banner-h2 span {
-    color: #E5226D;
-}
-
-.banner-container {
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    max-height: 400px;
-}
-
-.banner-text-container {
-    position: absolute;
-    left: 50%;
-    top: 50%; 
-    transform: translate(-50%, -50%);
-}
-
-.banner-text {
-    width: 80rem;
 }
 
 /* Header */
@@ -229,10 +325,11 @@ p {
     padding: 2% 5%;
 }
 
-.header-logo span {
+.header-brandname {
     font-family: 'Noto Sans JP';
     font-weight: 800;
     color: #3d1518; 
+    vertical-align: middle;
 }
 
 .navbar-container {
@@ -248,228 +345,13 @@ p {
     padding: 0 20px;
 }
 
-.form-search input, button {
-    border-radius: 50px;
-    border: none;
-    background-color: #F1F3F5;
-}
-
-.form-search button {
-    border: none;
-    padding: 0;
-    background: none;
-}
-
-.form-search button i {
-    color: #808080;
-    font-size: 1.2rem;
-}
-
-.form-search input::placeholder {
-    color: #d3d3d3;
-    font-size: 0.8rem;
-}
-
-/* hero section */
-
-.hero-container {
-    max-height: 430px;
-}
-
-.hero-large {
-    max-height: 500px;
-}
-
-.hero-img {
-    width: 150%;
-    opacity: 30%;
-}
-
-.hero-btn {
-    margin: -4% 1% 3% 0;
-    font-size: 1rem;
-}
-
-.btn-dark {
-    background-color: #E5226D; 
-    border-color: #E5226D;
-}
-
-.btn-outline-primary {
-    color: #E5226D;
-    border-color: #E5226D;
-}
-
-.btn-dark:hover {
-    background-color: #FFFFFF; 
-    color: #E5226D;
-    border-color: #E5226D;
-}
-
-.btn-outline-primary:hover {
-    background-color: #E5226D;
-    border-color: #E5226D; 
-}
-
-/*  banner-only-text */
-.top-banner {
-    display: inline-block;
-}
-
-.banner-only-text {
-    background-color: #3c6d04;
-    padding: 2.8% 0;
-}
-
-.banner-only-text-p {
+.nav-link {
     font-family: 'Noto Sans JP';
-    font-size: 1rem;
-    color: #FFFFFF;
-    margin: 0;
-    display: inline-block;
 }
-
-.banner-btn {
-    margin-left: 1.7%;
-    font-size: 1rem;
-}
-
-.banner-btn:hover {
-    border-color: #3c6d04;
-}
-
-/* Content Section */
-
-.content-heading {
-    padding: 0 0 4% 0;
-}
-.content-container {
-    padding: 7% 5% 7% 5%;
-}
-
-.content-item-img-box {
-    height: 180px;
-}
-
-.item-img {
-    max-width: 100%;
-}
-
-/* For the item lists */
-
-.items-container {
-    padding: 0 5% 5% 5%;
-}
-
-.item-box {
-    width: 280px;
-}
-
-.item-img-box {
-    align-items:center;
-    justify-content:center;
-    display:flex;
-    width: 280px;
-    height: 280px;
-    overflow: hidden;
-}
-
-.item-img {
-    width: 100%;
-}
-
-.item-name {
-    font-family: 'Noto Sans JP';
-    font-size: 1.1rem;
-    margin: 4.5% 0 4.5% 0;
-}
-
-.item-price {
-    font-size: 0.9rem;
-    margin: 4.5% 0 4.5% 0;
-}
-
-/* Home banner */
-
-.banner-img-home {
-    width: 100%;
-    filter: brightness(60%);
-}
-
-/* footer */
-
-.footer-menu-row {
-    padding: 0 5%;
-    text-align: left;
-}
-
-.footer-menu hr {
-    padding-top: 2%;
-}
-
-.footer-menu-title {
-    font-weight: 600;
-}
-
-.footer-menu-ul {
-    padding: 0;
-}
-
-.footer-menu-ul li {
-    list-style: none;
-    font-family: 'Noto Sans JP';
-    font-weight: 400;
-    font-size: 0.8rem;
-    padding: 3% 0;
-}
-
-.footer-bottom {
-    padding: 3% 4% 4% 4%;
-}
-
-.footer-bottom hr {
-    margin-bottom: 3%;
-    max-width: 100%;
-}
-
-.social-icon {
-    color: #E5226D;
-    margin: 2% 1%;
-}
-
-.footer-credit {
-    color: #808080;
-    font-size: 0.9rem;
-    text-align: left;
-}
-
-/* Meal Package */
-
-.item-synopsis {
-    font-size: 0.8rem;
-    color: #808080;
-    line-height: 1.5rem;
-    word-break: keep-all;
-}
-
-/* Registration */
-
-
-
-.form-heading {
-    width: 35%;
-    font-size: 1.2rem;
-    margin-top: -75px;
-    background: #FFFFFF;
-    background-color: #FFFFFF;
-    color: #3d1518; 
-}
-
-
 
 @media (max-width: 1028px){
     .search-wrapper {
-        margin: 6% 3%;
+        margin: 6% 0;
     }
 
     h1 {

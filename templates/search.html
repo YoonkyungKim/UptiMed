@@ -1,28 +1,113 @@
 {% extends "layout-member.html" %}
 {% block content %}
+
 <div class="search-wrapper">
     <div class="sidebar">
-        <div class="sidebar-search">
-            <form class="search-form form-search">
+        <div class="sidebar-search-form {% if search_results == [] %}before-search{% endif %}">
+            <form class="search-form form-search" action="{{ url_for('search_result') }}" method="GET">
                 <div class="input-container search-input-container">
-                    <label for="search">Search clinics</label>
-                    <label for="search-sort">Sort the result by</label>
-                    <select name="sort" id="search-sort">
-                        <option value="by-distance">By Distance</option>
-                        <option value="review-score">Review Score</option>
-                    </select>
-                    <input class="search input" id="search" type="search" placeholder="Search by location" aria-label="Search">
-                    <button class="search-submit btn" type="submit"><i class="fa-3x fas fa-search"></i></button>
+                    <span class="search-span" for="search">Find a hospital near you.</span>
+                    <input class="search-input search input" id="search" name="search" type="search" placeholder="Search by location" aria-label="Search">
+                    <input class="search-submit" name="search-submit" type="submit" value="Find"></input>
                 </div>
             </form>
         </div>
-        <div class="sidebar-search">div1</div>
-        <div class="sidebar-search">div1</div>
-        
+        <div class="sidebar-search-result">
+            {% if search_results %}
+                {% if search_results[0] == 'No result' %}
+                    <div class="no-search-result">
+                        <p>Sorry, no hospitals are currently registered with UptiMed near this location.</p>
+                    </div>  
+                {% else %}
+                    {% for e in search_results %}
+                        <div class="search-result-box">
+                            <h1 class="search-result-name">
+                                {{ e.name }}
+                            </h1>
+                            <p class="search-result-wait-time">
+                                {{ e.wait_time }}
+                                <span class="search-result-wait-time-span">min</span>
+                            </p>
+                            <p class="search-result-addr">
+                                {{ e.address_line_1 }} {{ e.address_line_2 }}
+                            </p>
+                            <p class="search-result-operating-time">
+                                <span class="search-result-operating-time-span">Operating time: </span>
+                                {{ e.operating_time }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="search-map">
+        <div id="map"></div>
     </div>
 
-    <div class="content">
-        <div id="mapid"></div>  
-    </div>
+    <script>
+        // Initialize and add the map
+        var map;
+        //Depending on the wait time, it returns different color
+        function getIconForLine(value) {
+          if (value >= 60) {
+            return "http://maps.google.com/mapfiles/ms/micons/red-dot.png";
+          } else if (value >= 30 && value < 60) {
+            return "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+          } else if (value >= 1 && value < 30) {
+            return "http://maps.google.com/mapfiles/ms/micons/green-dot.png";
+          } 
+    
+        }
+    
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                lat: 43.783721,
+                lng: -79.395882
+                },
+                zoom: 12
+            });
+        
+            
+            var data = {{hospitals|tojson}};
+        
+            for (var o of data) {
+        
+                var latitude = parseFloat(o.latitude);
+                var longtitude = parseFloat(o.longtitude);
+        
+                var contentString = '<b>'+o.name+'</b>' + '<br><em> wait time: '+ o.wait_time + ' (min)</em>' + '<br><h>'+o.address_line_1+'</h>' + '<br><h>'+', ' + o.address_line_2 + '</h>' + '<br><h>'+o.operating_time+'<h>';
+        
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+        
+                var latLng = new google.maps.LatLng(latitude, longtitude);
+                var url;
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: latLng,
+                    icon: getIconForLine(o.wait_time),
+                    clickable: true,
+                    title: o.name
+                });
+        
+                (function (iw,m) {
+                    marker.addListener('click', function () {
+                        map.setZoom(15);
+                        iw.open(map, m);
+                    });
+                })(infowindow, marker);
+            }
+        }
+          
+    </script>
+
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap">
+    </script>
 </div>
+
 {% endblock %}

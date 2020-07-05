@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <style>
+    #map {
+      height: 400px;
+      width: 70%;
+    }
+  </style>
+  <!-- <script type="text/javascript" src="map.js"></script> -->
+</head>
+
+<body>
+  <h3>Where you are</h3>
+
+  <!--The div element for the map -->
+  <div id="map"></div>
+  <script>
+    // Initialize and add the map
+    var map;
+    //Depending on the wait time, it returns different color
+    function getIconForLine(value) {
+      if (value >= 60) {
+        return "http://maps.google.com/mapfiles/ms/micons/red-dot.png";
+      } else if (value >= 30 && value < 60) {
+        return "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
+      } else if (value >= 1 && value < 30) {
+        return "http://maps.google.com/mapfiles/ms/micons/green-dot.png";
+      } 
+
+    }
+
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: {
+          lat: 43.783721,
+          lng: -79.395882
+        },
+        zoom: 12
+      });
+      
+      var data = {{hospital_info|tojson}};
+
+      
+        
+
+
+      for (var o of data) {
+
+        var contentString = '<b>'+o.name+'</b>' + '<br><em> wait time: '+ o.wait_time + ' (min)</em>' + '<br><h>'+o.address_line_1+'</h>' + '<br><h>'+', ' + o.address_line_2+'</h>'+ '<br><h>'+o.operating_time+'<h>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        
+        var latLng = new google.maps.LatLng(o.latitude, o.longtitude);
+        var url;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: latLng,
+          icon: getIconForLine(o.wait_time),
+          clickable: true,
+          title: o.name
+        
+        });
+        
+        
+
+        (function (iw,m) {
+            marker.addListener('click', function () {
+              map.setZoom(15);
+              iw.open(map, m);
+            });
+          })(infowindow,marker);
+        
+
+      }
+
+    }
+    
+
+  </script>
+
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=APIKEYS&callback=initMap">
+  </script>
+
+</body>
+
+</html>

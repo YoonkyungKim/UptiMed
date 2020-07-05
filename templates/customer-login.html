@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--Enter Name -->
+<main class="main-form">
+    <div class="form-container">
+        <form class="register-form" action="{{ url_for('cust_login_submit') }}" method="POST">
+            <div class="logo-container">
+                <img class="logo" src="../static/img/uptimed5.png" width="40" height="40" alt="" loading="lazy">
+                <span class="brandname customer-brandname">UptiMed</span>
+            </div>
+            <div class="every-input-container">
+                <div class="input-container">
+                    <label class="customer-input-label" for="username">Username</label>
+                    <input class="input" id="username" type="text" name="name" placeholder="username" autofocus>
+                </div>
+                <div class="input-container">
+                    <label class="customer-input-label" for="password">Password<span class="password-reset"><a class="password-reset-link"href="#">Forgot password?</a></span></label>
+                    <input class="input" type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="input-container">
+                    <input class="signin-submit" type="submit" name="submit" id="submit" value="SIGN IN">
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</main>
+{% endblock %}
+

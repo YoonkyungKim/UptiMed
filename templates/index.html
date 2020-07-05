@@ -1,29 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
 <!--Enter Name -->
-<main class="main-form">
-    <!-- <div class="grid-100">
-    </div> -->
-    <div class="form-container">
-        <form class="register-form" action="{{ url_for('save') }}" method="POST">
-            <span class="logo-container">
-                <img class="logo" src="../static/logo-3.png" width="30" height="30" alt="" loading="lazy">UptiMed
-            </span>
-            <div class="every-input-container">
-                <div class="input-container">
-                    <label for="username">Username</label>
-                    <input class="input" id="username"  type="text" name="name" value="{{ saves.get('name', '') }}"  placeholder="username" autofocus>
-                </div>
-                <div class="input-container">
-                    <label for="password">Password<span class="password-reset"><a class="password-reset-link"href="#">Forgot password?</a></span></label>
-                    <input class="input" type="password" name="password" id="password" placeholder="Password">
-                </div>
-                <div class="input-container">
-                    <input class="signin-submit" type="submit" name="submit" id="submit" value="SIGN IN">
-                </div>
-            </div>
-            
-        </form>
+<main class="index-main">
+    <div class="index-logo-container">
+        <img class="logo" src="../static/img/uptimed5.png" width="60" height="60" alt="" loading="lazy">
+        <!-- <p class="index-brandname">UptiMed</p> -->
+       <span class="index-brandname brandname">UptiMed</span> 
+    </div>
+    <p class="index-p">Please choose the one that applies to you!</p>
+    <div class="index-button-container">
+        <a href="customer-login"><button class="index-button index-button-customer">Patients</button></a>
+        <a href="#"><button class="index-button index-button-hospital">Hospitals</button></a>
     </div>
 </main>
 {% endblock %}
