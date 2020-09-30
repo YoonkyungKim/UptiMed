@@ -1,5 +1,4 @@
-# UptiMed
-Website offering hospital waiting time
+# UptiMed - offers hospital waiting time
 <br><br>
 This website focuses on pediatrics and children's treatment centers.
 
