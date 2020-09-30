@@ -78,5 +78,5 @@ def postalSearch():
 
 
 # debug=True: reload everytime we change the code and save it
-if __name__ == "main":
+if __name__ == "__main__":
     app.run(debug=True, port=8000, host='0.0.0.0')
