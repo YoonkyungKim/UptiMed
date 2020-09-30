@@ -6,7 +6,7 @@ If you want to run our website, please visit below!
 
 ## Data Source:
 
-Ontario GeoHub - Ministry of Health Service Provider Locations
+Ontario GeoHub - Ministry of Health Service Provider Locations<br>
 https://geohub.lio.gov.on.ca/datasets/ministry-of-health-service-provider-locations?orderBy=ENGLISH_NAME&orderByAsc=false
 
 \+ Collected based on Google Maps Search
