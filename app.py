@@ -2,8 +2,11 @@ import json, csv
 
 from flask import Flask, render_template, redirect, url_for, request, make_response
 
+
 # always refer to yourself
 app = Flask(__name__)
+
+app.config.from_pyfile('settings.py')
 
 def read_hospital_info():
     with open("static/hospitals-final.csv") as csv_f:
@@ -30,7 +33,9 @@ def read_hospital_info():
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html",
+        APIKEY=app.config.get("APIKEY")
+    )
 
 @app.route('/customer-login')
 def cust_login():
