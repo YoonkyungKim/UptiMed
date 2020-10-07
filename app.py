@@ -33,9 +33,7 @@ def read_hospital_info():
 
 @app.route('/')
 def index():
-    return render_template("index.html",
-        APIKEY=app.config.get("APIKEY")
-    )
+    return render_template("index.html")
 
 @app.route('/customer-login')
 def cust_login():
@@ -52,7 +50,8 @@ def search():
     return render_template(
         "search.html",
         hospitals=hospitals,
-        search_results=[]
+        search_results=[],
+        APIKEY=app.config.get("APIKEY")
     )
 
 @app.route('/search-result', methods=['GET'])
@@ -71,7 +70,8 @@ def search_result():
     return render_template(
         "search.html",
         hospitals=hospitals,
-        search_results=results
+        search_results=results,
+        APIKEY=app.config.get("APIKEY")
     )
 
 
